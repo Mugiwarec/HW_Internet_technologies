@@ -5,4 +5,11 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
 
     <include file="changeset/v1.0.0.0.xml" relativeToChangelogFile="true"/>
+    <include file="dataset/employee.xml" relativeToChangelogFile="true"/>
+    <include file="dataset/bcc.xml" relativeToChangelogFile="true"/>
+    <include file="dataset/over_limit.xml" relativeToChangelogFile="true"/>
+    <include file="dataset/payment.xml" relativeToChangelogFile="true"/>
+    <include file="dataset/payment_line.xml" relativeToChangelogFile="true"/>
+    <include file="dataset/account.xml" relativeToChangelogFile="true"/>
+    <include file="dataset/account_line.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

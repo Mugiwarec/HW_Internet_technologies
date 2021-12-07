@@ -1,0 +1,16 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+
+    <changeSet id="dataset-over-limit-1" author="slava">
+        <insert tableName="OVER_LIMIT">
+            <column name="pay_date" value="2021-07-01 12:33:44"/>
+            <column name="amount" value="1555.5"/>
+            <column name="status_pay" valueBoolean="true"/>
+            <column name="date_of_creation" value="2021-06-15 11:05:05 "/>
+            <column name="bcc_id" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
