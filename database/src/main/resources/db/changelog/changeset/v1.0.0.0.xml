@@ -1,0 +1,154 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+
+    <!-- EMPLOYEE Entity -->
+    <changeSet id="v1.0.0.0-1" author="slava">
+        <createTable tableName="EMPLOYEE">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthday" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="department" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="position" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="employment_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- BCC Entity -->
+    <changeSet id="v1.0.0.0.2" author="slava">
+        <createTable tableName="BCC">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="limit" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <!-- ForeignKeyConstraint for BCC entity -->
+            <column name="employee_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_bcc_employee"
+                             references="EMPLOYEE(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- OVER_LIMIT Entity -->
+    <changeSet id="v1.0.0.0.3" author="slava">
+        <createTable tableName="OVER_LIMIT">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="pay_date" type="DATETIME">
+                <constraints nullable="true"/>
+            </column>
+            <column name="amount" type="DECIMAL">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_pay" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_of_creation" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <!-- ForeignKeyConstraint for OVER_LIMIT entity -->
+            <column name="bcc_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_over_limit_bcc"
+                             references="BCC(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- PAYMENT Entity -->
+    <changeSet id="v1.0.0.0.4" author="slava">
+        <createTable tableName="PAYMENT">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- PAYMENT_LINE Entity -->
+    <changeSet id="v1.0.0.0.5" author="slava">
+        <createTable tableName="PAYMENT_LINE">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_received" type="DECIMAL">
+                <constraints nullable="false"/>
+            </column>
+            <!-- ForeignKeyConstraint for PAYMENT_LINE entity -->
+            <column name="payment_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_payment_line_payment"
+                             references="PAYMENT(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ACCOUNT Entity -->
+    <changeSet id="v1.0.0.0.6" author="slava">
+        <createTable tableName="ACCOUNT">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="total_amount" type="DECIMAL">
+                <constraints nullable="true"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ACCOUNT_LINE Entity -->
+    <changeSet id="v1.0.0.0.7" author="slava">
+        <createTable tableName="ACCOUNT_LINE">
+            <column name="id" autoIncrement="true" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="amount_to_pay" type="DECIMAL">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <!-- ForeignKeyConstraint for ACCOUNT_LINE entity -->
+            <column name="account_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_account_line_account"
+                             references="ACCOUNT(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
