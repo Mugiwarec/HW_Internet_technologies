@@ -3,6 +3,7 @@ package com.mugiwarec.app.service.impl;
 import com.mugiwarec.app.mapper.EmployeeMapper;
 import com.mugiwarec.app.model.Employee;
 import com.mugiwarec.app.service.EmployeeService;
+import com.mugiwarec.core.entity.EmployeeEntity;
 import com.mugiwarec.core.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,16 +23,34 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee saveEmployee(Employee employee) {
-        return null;
+        EmployeeEntity entity = repository.saveAndFlush(EmployeeMapper.MAPPER.toEmployeeEntity(employee));
+
+        return EmployeeMapper.MAPPER.toEmployee(entity);
     }
 
     @Override
     public Employee updateEmployee(Employee employee) {
-        return null;
+        Optional<EmployeeEntity> entity = repository.findById(employee.getId());
+
+        if (entity.isPresent()) {
+            repository.saveAndFlush(EmployeeMapper.MAPPER.toEmployeeEntity(employee));
+        } else {
+            throw new RuntimeException("Employee not Found");
+        }
+
+        return employee;
     }
 
     @Override
     public String deleteEmployee(Long id) {
-        return null;
+        Optional<EmployeeEntity> entity = repository.findById(id);
+
+        if (entity.isPresent()) {
+            repository.deleteById(id);
+        } else {
+            throw new RuntimeException("Employee not Found");
+        }
+
+        return "Employee was deleted";
     }
 }

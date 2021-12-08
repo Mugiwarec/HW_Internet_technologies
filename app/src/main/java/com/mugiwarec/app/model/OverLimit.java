@@ -11,7 +11,7 @@ import java.util.Date;
 public class OverLimit {
 
     @Id
-    private final int id;
+    private final Long id;
 
     private Date payDate;
 

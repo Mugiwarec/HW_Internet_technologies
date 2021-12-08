@@ -10,7 +10,7 @@ import java.util.List;
 public class BCC {
 
     @Id
-    private final int id;
+    private final Long id;
 
     @NotEmpty
     private String phoneNumber;

@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -23,12 +24,12 @@ public class EmployeeEntity extends BasicEntity {
     private String surname;
 
     @Column(name = "birthday", nullable = false)
-    @NotEmpty
+    @NotNull
     private Date birthday;
 
     @Column(name = "department", nullable = false)
-    @NotEmpty
-    private int department;
+    @NotNull
+    private Integer department;
 
     @Column(name = "position", nullable = false)
     @NotEmpty
@@ -39,7 +40,7 @@ public class EmployeeEntity extends BasicEntity {
     private String address;
 
     @Column(name = "employment_date", nullable = false)
-    @NotEmpty
+    @NotNull
     private Date employmentDate;
 
     @OneToMany(cascade = {CascadeType.ALL})
