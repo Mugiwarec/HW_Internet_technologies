@@ -1,5 +1,6 @@
 package com.mugiwarec.app.model;
 
+import com.mugiwarec.core.entity.BCCEntity;
 import lombok.Data;
 
 import javax.persistence.*;
