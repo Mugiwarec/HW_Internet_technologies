@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,8 +19,8 @@ public class BCCEntity extends BasicEntity {
     private String phoneNumber;
 
     @Column(name = "limit", nullable = false)
-    @NotEmpty
-    private int limit;
+    @NotNull
+    private Integer limit;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "bcc_id")

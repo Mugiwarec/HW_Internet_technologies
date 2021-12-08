@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
@@ -20,15 +21,15 @@ public class OverLimitEntity extends BasicEntity {
     private Date payDate;
 
     @Column(name = "amount", nullable = false)
-    @NotEmpty
+    @NotNull
     private BigDecimal amount;
 
     @Column(name = "status_pay", nullable = false)
-    @NotEmpty
-    private boolean statusPay;
+    @NotNull
+    private Boolean statusPay;
 
     @Column(name = "date_of_creation", nullable = false)
-    @NotEmpty
+    @NotNull
     private Date dateOfCreation;
 
     @Override
