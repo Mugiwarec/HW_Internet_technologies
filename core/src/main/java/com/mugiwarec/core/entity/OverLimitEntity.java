@@ -19,15 +19,15 @@ public class OverLimitEntity extends BasicEntity {
     @Column(name = "pay_date")
     private Date payDate;
 
-    @Column(name = "amount")
+    @Column(name = "amount", nullable = false)
     @NotEmpty
     private BigDecimal amount;
 
-    @Column(name = "status_pay")
+    @Column(name = "status_pay", nullable = false)
     @NotEmpty
     private boolean statusPay;
 
-    @Column(name = "date_of_creation")
+    @Column(name = "date_of_creation", nullable = false)
     @NotEmpty
     private Date dateOfCreation;
 

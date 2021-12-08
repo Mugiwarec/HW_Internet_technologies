@@ -23,7 +23,7 @@ public class BCCEntity extends BasicEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "bcc_id")
-    private List<OverLimitEntity> overLimitEntity;
+    private List<OverLimitEntity> overLimitEntities;
     
     @Override
     public boolean equals(Object o) {

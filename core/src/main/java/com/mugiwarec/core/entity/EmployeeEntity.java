@@ -44,7 +44,7 @@ public class EmployeeEntity extends BasicEntity {
 
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "employee_id")
-    private List<BCCEntity> bccEntity;
+    private List<BCCEntity> bccEntities;
 
     @Override
     public boolean equals(Object o) {
