@@ -22,7 +22,7 @@ public class BCCEntity extends BasicEntity {
     @NotNull
     private Integer limit;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "bcc_id")
     private List<OverLimitEntity> overLimitEntities;
 
