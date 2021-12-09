@@ -43,7 +43,7 @@ public class EmployeeEntity extends BasicEntity {
     @NotNull
     private Date employmentDate;
 
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "employee_id")
     private List<BCCEntity> bccEntities;
 

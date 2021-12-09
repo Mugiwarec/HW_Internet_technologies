@@ -22,10 +22,10 @@ public class BCCEntity extends BasicEntity {
     @NotNull
     private Integer limit;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "bcc_id")
     private List<OverLimitEntity> overLimitEntities;
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
