@@ -6,6 +6,7 @@ import com.mugiwarec.app.service.EmployeeService;
 import com.mugiwarec.core.entity.EmployeeEntity;
 import com.mugiwarec.core.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,7 +15,8 @@ import java.util.Optional;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final EmployeeRepository repository;
+    @Autowired
+    private EmployeeRepository repository;
 
     @Override
     public Optional<Employee> findEmployeeById(Long id) {
